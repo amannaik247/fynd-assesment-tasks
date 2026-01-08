@@ -61,9 +61,15 @@ export default function UserPage() {
   };
 
   return (
-    <main className="flex min-h-screen items-center justify-center bg-black text-white">
+    <main className="flex min-h-screen flex-col items-center justify-center bg-black text-white">
+      <div className="mb-6 flex flex-col items-center">
+        <div className="h-16 w-16 bg-gray-800 rounded-full flex items-center justify-center mb-2">
+          {<img src="images/icon.jpeg" alt="Company Logo" className="h-50 w-50 object-contain" />}
+        </div>
+        <p className="text-sm font-medium text-gray-300">FYND</p>
+      </div>
       <form className="w-full max-w-md space-y-6 p-8" onSubmit={handleSubmit}>
-        <h1 className="text-2xl font-bold text-center">Give Feedback</h1>
+        <h1 className="text-2xl font-bold text-center">Please Give Us A Feedback</h1>
         <div className="flex justify-center space-x-2">
           {[1, 2, 3, 4, 5].map((star) => (
             <button
@@ -79,7 +85,7 @@ export default function UserPage() {
         <textarea
           value={review}
           onChange={(e) => setReview(e.target.value)}
-          placeholder="Write your review... (Optional)"
+          placeholder="Write a review... (Optional)"
           className="w-full rounded-sm border border-yellow-400 bg-black p-2 text-white focus:outline-none focus:border-yellow-400"
           rows={4}
         />
