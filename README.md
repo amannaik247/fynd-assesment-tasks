@@ -1,2 +1,3 @@
 # fynd-assesment-tasks
-These are my solutions to the tasks provided by fynd organisation
+- task 1 solution is in the `task1` branch
+- The `main` branch is the code for task 2 and source to vercel deployment
