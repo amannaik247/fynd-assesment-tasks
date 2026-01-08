@@ -1,17 +1,20 @@
 # Evaluation of 3 prompts
 
-## Prompt 1: Baseline prompt(v1)
+## What are the 3 prompts? 
+### Prompt 1: Baseline prompt(v1)
 **Reason for trying this prompt:**  
 This will be a direct prompt stating what exactly the task is and not much more information on how to do it.  
 This will be used to compare with the rest of the prompts. 
 
 ```prompt
 Classify the following Yelp review into a rating of 1 to 5 stars.  
-Output JSON: {{"predicted_stars": int, "explanation": str}}  
+Output JSON: {{"predicted_stars": int, "explanation": str(one line explanation)}}  
 Review: {review}  
 ```
 
-## Prompt 2: Strict prompt(v2)
+----
+
+### Prompt 2: Strict prompt(v2)
 **Reason for trying this prompt:**  
 With the baseline prompt I realised many 4's were considered as 5's. After looking at the dataset I realised the 4 star reviews mostly have some negative point in the text. So this prompt was caliberated to minimise that error.
 
@@ -20,27 +23,31 @@ Classify this Yelp review from 1-5 stars.
 Critical rule: If the review contains ANY complaint, criticism, or suggestion for improvement, it cannot be 5 stars (maximum 4 stars).
 5 stars = Only pure praise, no negatives whatsoever
 4 stars = Mostly positive BUT mentions at least one flaw, limitation, or wish
-Output JSON: {{"predicted_stars": int, "explanation": str}}
+Output JSON: {{"predicted_stars": int, "explanation": str(one line explanation)}}
 Review: {review}
 ```
 
-## Prompt 3: Chain of Thought prompt(v3)
+----
+
+### Prompt 3: Chain of Thought prompt(v3)
 **Reason for trying this prompt:**  
 Trying out a new approach now which is applied with many LLM's for coding tasks is chain-of-thought. Making the LLM
 
 ```prompt
 Analyze this Yelp review step-by-step:
 1. List ALL positive aspects mentioned (food quality, service, atmosphere, value, etc.)
-2. List ALL negative aspects, complaints, or limitations mentioned (even minor ones like "wish they had X", "a bit crowded", "long wait", "limited options")
+2. List ALL negative aspects, complaints, or limitations mentioned (even minor ones)
 3. Check for qualifying language: "but", "however", "except", "only issue", "I wish"
 Decision logic:
 - ANY negatives found in step 2 or 3? -> Maximum 4 stars
 - Only positives with enthusiastic tone? -> 5 stars
 - Mixed or neutral tone? -> 3 stars
 - Negative description and tone -> 2 star or below
-Output JSON: {{"predicted_stars": int, "explanation": str}}
+Output JSON: {{"predicted_stars": int, "explanation": str(one line explanation)}}
 Review: {review}
 ```
+
+----
 
 # Evaluation criterias
 - Accuracy: As it was asked in the assignment
@@ -110,3 +117,4 @@ The f1 score increased a lot that means it is working much better on this imbala
 - V2 was able to classify most of the 4's and 5's which increased its accuracy as they are the majority. 
 - The CoT prompt(v3) did better than the baseline prompt. The F1 score increased, that means this would perform a lot better on an imbalanced dataset like this than the baseline prompt. 
 - Baseline prompt gave the fastest results and was much better than I expected.
+
