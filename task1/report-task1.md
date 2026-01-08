@@ -31,7 +31,7 @@ Review: {review}
 
 ### Prompt 3: Chain of Thought prompt(v3)
 **Reason for trying this prompt:**  
-Trying out a new approach now which is applied with many LLM's for coding tasks is chain-of-thought. Making the LLM
+Trying out a new approach now which is applied with many LLM's for coding tasks is chain-of-thought. Making the LLM think through the process before proceeding
 
 ```prompt
 Analyze this Yelp review step-by-step:
@@ -117,4 +117,5 @@ The f1 score increased a lot that means it is working much better on this imbala
 - V2 was able to classify most of the 4's and 5's which increased its accuracy as they are the majority. 
 - The CoT prompt(v3) did better than the baseline prompt. The F1 score increased, that means this would perform a lot better on an imbalanced dataset like this than the baseline prompt. 
 - Baseline prompt gave the fastest results and was much better than I expected.
+
 
